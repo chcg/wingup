@@ -223,7 +223,6 @@ const char* TiXmlBase::ReadName( const char* p, TIXML_STRING * name )
 const char* TiXmlBase::GetEntity( const char* p, char* value )
 {
 	// Presume an entity, and pull it out.
-    TIXML_STRING ent;
 	int i;
 
 	// Handle the &#x entities.
@@ -784,7 +783,7 @@ const char* TiXmlElement::Parse( const char* p, TiXmlParsingData* data )
 			}
 
 			attrib->SetDocument( document );
-			const char* pErr = p;
+			pErr = p;
 			p = attrib->Parse( p, data );
 
 			if ( !p || !*p )
