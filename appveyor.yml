@@ -9,8 +9,8 @@ platform:
     - Win32
 
 configuration:
-    - Unicode Release
-    - Unicode Debug
+    - Release
+    - Debug
 
 install:
     - if "%platform%"=="x64" set archi=amd64
@@ -29,19 +29,19 @@ after_build:
     - ps: >-
         $wingupFileName = "GUP.$env:PLATFORM.$env:CONFIGURATION.exe"
 
-        if ($env:PLATFORM -eq "x64" -and $env:CONFIGURATION -eq "Unicode Release") {
+        if ($env:PLATFORM -eq "x64" -and $env:CONFIGURATION -eq "Release") {
             Push-AppveyorArtifact "\bin64\GUP.exe" -FileName "$wingupFileName"
         }
 
-        if ($env:PLATFORM -eq "x64" -and $env:CONFIGURATION -eq "Unicode Debug") {
-            Push-AppveyorArtifact "visual.net\x64\Unicode Debug\GUP.exe" -FileName "$wingupFileName"
+        if ($env:PLATFORM -eq "x64" -and $env:CONFIGURATION -eq "Debug") {
+            Push-AppveyorArtifact "visual.net\x64\Debug\GUP.exe" -FileName "$wingupFileName"
         }
 
-        if ($env:PLATFORM -eq "Win32" -and $env:CONFIGURATION -eq "Unicode Release") {
+        if ($env:PLATFORM -eq "Win32" -and $env:CONFIGURATION -eq "Release") {
             Push-AppveyorArtifact "bin\GUP.exe" -FileName "$wingupFileName"
         }
 
-        if ($env:PLATFORM -eq "Win32" -and $env:CONFIGURATION -eq "Unicode Debug") {
-            Push-AppveyorArtifact "visual.net\Unicode Debug\GUP.exe" -FileName "$wingupFileName"
+        if ($env:PLATFORM -eq "Win32" -and $env:CONFIGURATION -eq "Debug") {
+            Push-AppveyorArtifact "visual.net\Debug\GUP.exe" -FileName "$wingupFileName"
         }
 
