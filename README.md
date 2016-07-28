@@ -6,6 +6,12 @@ The aim of WinGup is to provide a ready to use and configurable updater
 which downloads a update package then installs it. By using cURL library
 and TinyXml module, WinGup is capable to deal with http protocol and process XML data.
 
+Build Status
+------------
+
+`VS2013` (via appveyor)  [![Build status](https://ci.appveyor.com/api/projects/status/lvpvctpyfc6bfo9l?svg=true)](https://ci.appveyor.com/project/chcg/wingup)
+
+
 
 Why WinGup?
 -----------
