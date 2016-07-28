@@ -7,8 +7,8 @@ clone_depth: 1
 
 environment:
   matrix:
-  - Toolset: v140
-  - Toolset: v120
+  - PlatformToolset: v140
+  - PlatformToolset: v120
 
 platform:
     - x64
@@ -19,15 +19,9 @@ configuration:
     - Debug
 
 install:
-    $vc_version = switch ($env:TOOLSET)
-    {
-        "v140" {"Microsoft Visual Studio 14.0"}
-        "v120" {"Microsoft Visual Studio 12.0"}
-    }
-
     - if "%platform%"=="x64" set archi=amd64
     - if "%platform%"=="Win32" set archi=x86
-    - call "C:\Program Files (x86)\%vc_version%\VC\vcvarsall.bat" %archi%
+    - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %archi%
 
 build:
     parallel: true                  # enable MSBuild parallel builds
@@ -35,12 +29,12 @@ build:
 
 build_script:
     - cd c:\projects\wingup\vcproj
-    - msbuild GUP.vcxproj /p:configuration="%configuration%" /p:platform="%platform%"
+    - msbuild GUP.vcxproj /p:configuration="%configuration%" /p:platform="%platform%" /p:PlatformToolset="%PlatformToolset%"
 
 after_build:
     - cd c:\projects\wingup\
     - ps: >-
-        $wingupFileName = "GUP.$env:PLATFORM.$env:CONFIGURATION.$env:TOOLSET.exe"
+        $wingupFileName = "GUP.$env:PLATFORM.$env:CONFIGURATION.$env:PLATFORMTOOLSET.exe"
 
         if ($env:PLATFORM -eq "x64" -and $env:CONFIGURATION -eq "Release") {
             Push-AppveyorArtifact "bin64\GUP.exe" -FileName "$wingupFileName"

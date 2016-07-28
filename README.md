@@ -9,9 +9,7 @@ and TinyXml module, WinGup is capable to deal with http protocol and process XML
 Build Status
 ------------
 
- | AppVeyor `VS2013`
- | -----------------
- | [![Build status](https://ci.appveyor.com/api/projects/status/lvpvctpyfc6bfo9l?svg=true)](https://ci.appveyor.com/project/chcg/wingup)
+AppVeyor `VS2013` and `VS2015`  [![Build status](https://ci.appveyor.com/api/projects/status/lvpvctpyfc6bfo9l?svg=true)](https://ci.appveyor.com/project/chcg/wingup)
 
 
 
